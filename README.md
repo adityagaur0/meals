@@ -26,6 +26,10 @@
 1. create -> screen ->meals.dart 
 2. Create -> modal -> meal.dart
    - Enums basically are the choices and options which one need to selec
-3. ***Loading meal data to screen : USING BEST EFFICIENT METHOD***
-      - dummy -> modal-> list 
+### 6. ***Loading meal data to screen : USING BEST EFFICIENT METHOD(157)***
+      - dummy -> modal-> listview BUILDER
 
+### 7. Add CROSS section Navigation (158)
+1. using Navigator push in categories.dart
+   categories.dart -> meals.dart
+### 8. Passing data to the Target screen (159)
