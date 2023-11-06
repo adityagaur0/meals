@@ -26,7 +26,7 @@
 1. create -> screen ->meals.dart 
 2. Create -> modal -> meal.dart
    - Enums basically are the choices and options which one need to selec
-3. ***Loading meal data to screen : USING BEST EFFICIENT METHOD* ***
+3.  ***Loading meal data to screen : USING BEST EFFICIENT METHOD***
    
    dummy -> modal-> list 
 
