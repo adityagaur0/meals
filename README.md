@@ -33,4 +33,55 @@
 1. using Navigator push in categories.dart
    categories.dart -> meals.dart
 ### 8. Passing data to the Target screen (159)
+1. accesssing dummy meal data in 
+```
+void _selectcategories(BuildContext context, Category category) {
+    //159
+    // load the dummy meals data into the their respective category
+    // category in the argument is the selected category by the user 
+    // and user can now click on it.
+    // after clicking the
+    final filteredmeals = dummyMeals
+        .where((meal) => meal.categories.contains(category.id))
+        .toList();
+
+    //158 aka 7
+
+    //dummyMeals.where((meal) => );// 159 aka 8
+    //final numbers = <int>[1, 2, 3, 5, 6, 7];
+    // var result = numbers.where((x) => x < 5); // (1, 2, 3)
+    // result = numbers.where((x) => x > 5); // (6, 7)
+    // result = numbers.where((x) => x.isEven); // (2, 6)
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) =>
+            MealsScreen(title: category.title, meals: filteredmeals),
+      ),
+    );
+  }
+```
+
+### 9. StackWidget (160)
+ 1.Card: use card widget also used in expense tracker.
+ 2.Stack : help us to stack the widget on top of each other.
+ 3.FadeInImage: image transition.(Creates a widget that displays a [placeholder] while an [image] is loading, then fades-out the placeholder and fades-in the image.)
+ 4.MemoryImage: Creates an object that decodes a [Uint8List] buffer as an image.
+ 5.transparent_image: ^2.0.1(pacakge): used as placeholder which will be transparent in FadeInImage.
+ 6.NetworkImage :acces the online image.
+ 7.Positioned : Creates a widget that controls where a child of a [Stack] is positioned.
+
+
+### 9. Improving the MealItem Widget(161)
+
+### 10. Adding Navigation to the MealDetails Screen(162)
+
+### 11. 163. Improving the MealDetails Screen
+
+### 12. 164. Adding Tab-based Navigation
+
+### 13. 165. Passing Functions Through Multiple Layers of Widgets (for State Management)
+
+
+
 
