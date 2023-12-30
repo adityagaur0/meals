@@ -120,7 +120,7 @@ This method is not wrong but it is inconvient ,as our app gets more complex, mor
 ![Screenshot 2023-12-31 at 4 48 33 AM](https://github.com/adityagaur0/meals/assets/112656570/91aab2bc-4d66-4606-a1fd-5822a3df669a)
 
 ### How riverpod package works:
->1. we can create a provider(Which is a object created by class provided by riverpod package).
+1. we can create a provider(Which is a object created by class provided by riverpod package).
 2. this provider can provide a dynamic value or a provide a method that can change that value.
 3. And in our application, in any widget we can setup consumer that is connected by the provider by the riverpod package.
 4. In the consumer widget we can listen to the changes by the provider or even trigger those changes by the method provided by the provider
