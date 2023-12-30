@@ -102,4 +102,16 @@ In this section, you learned about the recommended navigation approach: Pushing 
 There also exists an alternative approach, though - you can assign names to routes and load your routes via those names. However, that approach is not recommended (for most apps).
 Nonetheless, you can explore this alternative approach via the official documentation: https://docs.flutter.dev/development/ui/navigation#using-named-routes
 
+----
+----
+
+# Section 9: MANAGING APP WIDE STATE[MEALS APP]
+## The problem is:
+![Screenshot 2023-12-27 at 2 56 51 AM](https://github.com/adityagaur0/meals/assets/112656570/ee45d1db-ac62-47e2-9767-0b88c95da37b)
+
+> For example, In ***Favourite screen*** we need list of favourite meals therefore we need to favourite state here.
+but favourite state gets changed in ***Meals detial screen*** as in this screen we have a button to mark and unmark the favourite meals.
+So in theory we need to communicate between these two screen but it is not possible . To resolve it we create a method in ***Tabscreen***
+to manage the the favourite state. 
+This method is not wrong but it is inconvient ,as our app gets more complex, more inconvient it get.
 
