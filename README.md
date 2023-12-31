@@ -249,3 +249,13 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     final meals=ref.read(mealsProvider);  // **provider
     final availableMeals = meals.where((meal) {
 ```
+
+### next create favourites_provider: 
+idea to is to build the provider which store the favourite meals into list of favourite meals.
+
+>/*
+here me dont use provider clause as it is used for static dummy data
+. like in meals_provider (a list that never changes).
+for complex data that should change under certian circumstances
+use StateNotifierProvider clause ,optimised for the data that can change.
+*/
