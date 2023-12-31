@@ -124,3 +124,128 @@ This method is not wrong but it is inconvient ,as our app gets more complex, mor
 2. this provider can provide a dynamic value or a provide a method that can change that value.
 3. And in our application, in any widget we can setup consumer that is connected by the provider by the riverpod package.
 4. In the consumer widget we can listen to the changes by the provider or even trigger those changes by the method provided by the provider
+
+=> changes:
+```
+void main() {
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
+}
+```
+1. stateful to consumer Statefull widget.
+2. stateless to consumerWidget.
+
+=> for basic we created meals provider 
+```
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals/data/dummy_data.dart';
+
+//setting up provider and can use it in need of use.
+final mealsProvider = Provider((ref) {
+  return dummyMeals;
+});
+/*provider claus provided by flutter riverpod
+ now to instantiate this provider clause
+we create a provider object from which we can listen to inside our widget.
+store this object using variable to reuse this object later.
+// meals provider aka to app meals data here.
+this provider clause need atleast one parameter .
+the one positional parameter is of type function.
+this function recieve the providerRef Object.
+because this function we pass to provider will be called by riverpod package.
+this fn recieve a ref as mentioned, which is of type provider ref .
+and inside of this function we should pass the value we should provide 
+example dummy meals 
+ */
+```
+and call it into tabs.dart
+```
+//class TabsScreen extends StatefulWidget { ** Provider
+class TabsScreen extends ConsumerStatefulWidget { 
+  const TabsScreen({super.key});
+
+  @override
+  //State<TabsScreen> createState() => _TabsScreenState(); **provider
+  ConsumerState<TabsScreen> createState() => _TabsScreenState();
+}
+//class _TabsScreenState extends State<TabsScreen> { **provider
+class _TabsScreenState extends ConsumerState<TabsScreen> {
+  int _selectedPageIndex = 0;
+
+  final List<Meal> _favoriteMeals = [];
+
+  Map<Filter, bool> _selectedFilters = kInitialFilters;
+
+  void _showInfoMessage(String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+
+  void _setScreen(String identifier) async {
+    Navigator.of(context).pop();
+    if (identifier == 'filters') {
+      final result =
+          await Navigator.of(context).push<Map<Filter, bool>>(MaterialPageRoute(
+              builder: (ctx) => FiltersScreen(
+                    currentFilters: _selectedFilters,
+                  )));
+
+      print(result);
+      setState(() {
+        _selectedFilters = result ??
+            kInitialFilters; //?? matlab aagr result null hai toh k initial call kro
+      });
+
+      /*storing the filter like this is not enough bcuz we also make sure build method 
+      executed again so that updated filter or updated meal list of available meals is passed
+      to the category screen.
+      But not to the meals screen cuz we don't want filter the meals that are visible 
+      on the screen But we can filter it to but in  this app logic 
+      favourite should always be visible no matter what which filter were selected
+      that's why here we only worry about category screen
+
+      */
+    }
+  }
+
+  void _toggleMealFavoriteStatus(Meal meal) {
+    //use this function in meals details screen
+    final isExisting = _favoriteMeals.contains(meal);
+    if (isExisting) {
+      setState(() {
+        _favoriteMeals.remove(meal);
+        _showInfoMessage("Meal is no longer a favourite.");
+      });
+    } else {
+      setState(() {
+        _favoriteMeals.add(meal);
+        _showInfoMessage("Marked as favourite!");
+      });
+    }
+  }
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    /*assume ref as a  widget. property we use to widget.
+    Now we have a ref property available to setup listners for the provider,
+    - ref available here due to consumer stateful above.
+    * Ref HAS TWO PROPERTY:
+     1. read() : to get data from provider once
+     2. watch(): to setup listener which make sure build method executes again as our data changes.
+    ** recommended ** : to use watch even if read is required.
+     watch need the parameter PROVIDER
+    */
+    final meals=ref.read(mealsProvider);  // **provider
+    final availableMeals = meals.where((meal) {
+```
