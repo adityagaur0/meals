@@ -140,25 +140,26 @@ void main() {
 
 => for basic we created meals provider 
 ```
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals/data/dummy_data.dart';
-
-//setting up provider and can use it in need of use.
-final mealsProvider = Provider((ref) {
+// Creating a provider for meals data in the app.
+final mealsProvider = Provider((providerRef) {
+  // The function receives a reference to the provider.
+  // Inside this function, you should provide the value for the provider.
+  
+  // Example: Providing dummy meals data.
+  List<Meal> dummyMeals = generateDummyMeals();
+  
+  // Return the value you want the provider to supply.
   return dummyMeals;
 });
-/*provider claus provided by flutter riverpod
- now to instantiate this provider clause
-we create a provider object from which we can listen to inside our widget.
-store this object using variable to reuse this object later.
-// meals provider aka to app meals data here.
-this provider clause need atleast one parameter .
-the one positional parameter is of type function.
-this function recieve the providerRef Object.
-because this function we pass to provider will be called by riverpod package.
-this fn recieve a ref as mentioned, which is of type provider ref .
-and inside of this function we should pass the value we should provide 
-example dummy meals 
+
+// Storing the provider object in a variable for reuse.
+var mealsProviderInstance = mealsProvider;
+
+/*
+
+In Flutter's Riverpod package, the Provider class is used to create providers that supply data to your widgets. To instantiate a Provider and reuse it later in your widget, you can create a provider object and store it in a variable.
+For example, let's say you want to create a provider for meals in your app. This provider requires at least one parameter, which is a function. This function receives a ProviderRef object, as it will be called by the Riverpod package.
+The function you pass to the provider should take the ProviderRef object as a parameter. Inside this function, you need to provide the value that the provider will supply. For instance, you can use this function to generate dummy meal data. 
  */
 ```
 and call it into tabs.dart
