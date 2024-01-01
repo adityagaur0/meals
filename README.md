@@ -142,9 +142,14 @@ void main() {
 ```
 /*
 
-In Flutter's Riverpod package, the Provider class is used to create providers that supply data to your widgets. To instantiate a Provider and reuse it later in your widget, you can create a provider object and store it in a variable.
-For example, let's say you want to create a provider for meals in your app. This provider requires at least one parameter, which is a function. This function receives a ProviderRef object, as it will be called by the Riverpod package.
-The function you pass to the provider should take the ProviderRef object as a parameter. Inside this function, you need to provide the value that the provider will supply. For instance, you can use this function to generate dummy meal data. 
+In Flutter's Riverpod package, the Provider class is used to create providers that supply data to your widgets.
+To instantiate a Provider and reuse it later in your widget, you can create a provider object and store it in a variable.
+For example, let's say you want to create a provider for meals in your app.
+This provider requires at least one parameter, which is a function.
+This function receives a ProviderRef object, as it will be called by the Riverpod package.
+The function you pass to the provider should take the ProviderRef object as a parameter.
+Inside this function, you need to provide the value that the provider will supply.
+For instance, you can use this function to generate dummy meal data. 
  */
 // Creating a provider for meals data in the app.
 final mealsProvider = Provider((providerRef) {
