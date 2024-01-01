@@ -237,25 +237,25 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    /*assume ref as a  widget. property we use to widget.
-    Now we have a ref property available to setup listners for the provider,
-    - ref available here due to consumer stateful above.
+    /*assume ref as a  widget. The property we use to widget.
+    Now we have a ref property available to set up listeners for the provider,
+    - ref available here due to consumerStatefulWidget above.
     * Ref HAS TWO PROPERTY:
-     1. read() : to get data from provider once
-     2. watch(): to setup listener which make sure build method executes again as our data changes.
-    ** recommended ** : to use watch even if read is required.
-     watch need the parameter PROVIDER
+     1. read(): to get data from the provider once
+     2. watch(): to set up a listener which makes sure the build method executes again as our data changes.
+    ** recommended **: to use a watch() even if the read() is required.
+     watch needs the parameter PROVIDER
     */
     final meals=ref.read(mealsProvider);  // **provider
     final availableMeals = meals.where((meal) {
 ```
 
 ### next create favourites_provider: 
-idea to is to build the provider which store the favourite meals into list of favourite meals.
+the idea is to build a provider that stores the favorite meals into the list of favorite meals.
 
 >
-here me dont use provider clause as it is used for static dummy data
-. like in meals_provider (a list that never changes).
-for complex data that should change under certian circumstances
-use StateNotifierProvider clause ,optimised for the data that can change.
+Here we don't use the ***provider*** class as it is used for static dummy data
+.Like in meals_provider (a list that never changes).
+But, for complex data that should that can change under certain circumstances,
+Use the ***StateNotifierProvider*** class instead, it is optimized for the data that can change.
 
