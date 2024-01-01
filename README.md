@@ -155,10 +155,6 @@ For instance, you can use this function to generate dummy meal data.
 final mealsProvider = Provider((providerRef) {
   // The function receives a reference to the provider.
   // Inside this function, you should provide the value for the provider.
-  
-  // Example: Providing dummy meals data.
-  List<Meal> dummyMeals = generateDummyMeals();
-  
   // Return the value you want the provider to supply.
   return dummyMeals;
 });
