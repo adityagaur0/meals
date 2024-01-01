@@ -135,7 +135,7 @@ void main() {
   );
 }
 ```
-1. stateful to consumer Statefull widget.
+1. stateful to consumerStatefulWidget.
 2. stateless to consumerWidget.
 
 => for basic we created meals provider 
