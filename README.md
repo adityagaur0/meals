@@ -1,4 +1,4 @@
-# Section 8: (Meals App) Building Multi-Screen Apps & Navigating Between Screens
+ # Section 8: (Meals App) Building Multi-Screen Apps & Navigating Between Screens
 
 ## Summary:-
 
@@ -136,7 +136,14 @@ void main() {
 }
 ```
 1. stateful to consumerStatefulWidget.
+   - @override
+   - //State<TabsScreen> createState() => _TabsScreenState(); **provider
+   -   ConsumerState<TabsScreen> createState() => _TabsScreenState();
+   - }  
+   - //class _TabsScreenState extends State<TabsScreen> { **provider
+   - class _TabsScreenState extends ConsumerState<TabsScreen> {
 2. stateless to consumerWidget.
+  - Widget build(BuildContext context, WidgetRef ref)
 
 => for basic we created meals provider 
 ```
