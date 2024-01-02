@@ -1,32 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/category.dart';
+import 'package:meals/models/meal.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen(
+      {super.key,
+       //required this.onToggleFavourite, ** NO NEED CUZ OF PROVIDER
+      required this.availableMeals});
+  //final void Function(Meal meal) onToggleFavourite;  ** NO NEED CUZ OF PROVIDER
+  final List<Meal> availableMeals;
 
-  void _selectcategories(BuildContext context) {
+  void _selectcategories(BuildContext context, Category category) {
+    //159
+    // load the dummy meals data into the their respective category
+    // category in the argument is the selected category by the user
+    // and user can now click on it.
+    // after clicking the
+    // final filteredmeals = dummyMeals
+    //     .where((meal) => meal.categories.contains(category.id))
+    //     .toList();
+    final filteredmeals = availableMeals
+        .where((meal) => meal.categories.contains(category.id))
+        .toList();
+
+    //158 aka 7
+
+    //dummyMeals.where((meal) => );// 159 aka 8
+    //final numbers = <int>[1, 2, 3, 5, 6, 7];
+    // var result = numbers.where((x) => x < 5); // (1, 2, 3)
+    // result = numbers.where((x) => x > 5); // (6, 7)
+    // result = numbers.where((x) => x.isEven); // (2, 6)
+
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => MealsScreen(title: ' Some title', meals: []),
+        builder: (context) => MealsScreen(
+          title: category.title,
+          meals: filteredmeals,
+        
+        ),
       ),
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  // Widget build(BuildContext context) {
+  Widget build(BuildContext context,) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Pick your category"),
-      ),
       //1.1. using gridView instead of listview.
       // gridview also contain gridview.builder (to dynamically grow the grid) for possible performance optimization.
       // but we use gridview() only cuz the categories are limited.
 
       body: GridView(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         //1.2. grid Delegate : Controls the layout of the grid.
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           //1.3.1 tells the no of column in the grid
@@ -71,7 +100,7 @@ class CategoriesScreen extends StatelessWidget {
             CategoryGridItem(
               category: category,
               onSelectCategory: () {
-                _selectcategories(context);
+                _selectcategories(context, category);
               },
             )
         ],
