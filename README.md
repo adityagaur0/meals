@@ -482,3 +482,8 @@ Adding animation to the star button in meals details screen
             ), // animate A.
 ```
 ### 3. Hero Transitions
+Hero widget
+which can be used to easily animate a widget
+across different screens here from meal item,
+which is part of the meals screen to meal details
+where we also added such a Hero widget.
