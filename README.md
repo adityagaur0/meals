@@ -266,3 +266,8 @@ Here we don't use the ***provider*** class as it is used for static dummy data
 But, for complex data that should that can change under certain circumstances,
 Use the ***StateNotifierProvider*** class instead, it is optimized for the data that can change.
 
+
+----
+----
+
+# Animations[MEALS APP]
