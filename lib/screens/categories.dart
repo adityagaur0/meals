@@ -7,7 +7,7 @@ import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/category_grid_item.dart';
 
 //Section 9: To make an explicit animation convert this stateless to statefull widget
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen(
       {super.key,
        //required this.onToggleFavourite, ** NO NEED CUZ OF PROVIDER
@@ -15,6 +15,11 @@ class CategoriesScreen extends StatelessWidget {
   //final void Function(Meal meal) onToggleFavourite;  ** NO NEED CUZ OF PROVIDER
   final List<Meal> availableMeals;
 
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
   void _selectcategories(BuildContext context, Category category) {
     //159
     // load the dummy meals data into the their respective category
@@ -24,7 +29,7 @@ class CategoriesScreen extends StatelessWidget {
     // final filteredmeals = dummyMeals
     //     .where((meal) => meal.categories.contains(category.id))
     //     .toList();
-    final filteredmeals = availableMeals
+    final filteredmeals = widget.availableMeals
         .where((meal) => meal.categories.contains(category.id))
         .toList();
 
