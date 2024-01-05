@@ -20,7 +20,8 @@ class CategoriesScreen extends StatefulWidget {
   State<CategoriesScreen> createState() => _CategoriesScreenState();
 }
 
-class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerProviderStateMixin{
+class _CategoriesScreenState extends State<CategoriesScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController //class
       _animationController; // animation controller must be set before build.
 //late is used to tell dart that it is fine, once the property is used . it will have a value.
@@ -29,7 +30,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
   void initState() {
     // TODO: implement initState
     super.initState();
-    _animationController = AnimationController(// animationcontroller class constructor function
+    _animationController = AnimationController(
+      // animationcontroller class constructor function
       /*
       vsync wants a ticker provider,this vsync make sure this animation executes 
       for every frame for smooth transition(60 times per sec).
@@ -40,12 +42,18 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
       single for single animation controller and for many animation controller
       use TickerProviderStateMixin.
        */
-      vsync:this, //always req
-      duration: const Duration(milliseconds: 300), //to controll how long animation will play.
+      vsync: this, //always req
+      duration: const Duration(
+          milliseconds: 300), //to controll how long animation will play.
       lowerBound: 0,
       upperBound: 1,
-
-    ); 
+      /*
+      throught this we in the end controll btw which value flutter will aniamte.
+      therefore with animations, we in the end always animate btw two values.
+      
+       
+      */
+    );
   }
 
   void _selectcategories(BuildContext context, Category category) {
