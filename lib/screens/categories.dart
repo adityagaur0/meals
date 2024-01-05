@@ -40,7 +40,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
       single for single animation controller and for many animation controller
       use TickerProviderStateMixin.
        */
-      vsync:this,
+      vsync:this, //always req
+      duration: const Duration(milliseconds: 300), //to controll how long animation will play.
+      lowerBound: 0,
+      upperBound: 1,
 
     ); 
   }
