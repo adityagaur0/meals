@@ -273,13 +273,13 @@ Use the ***StateNotifierProvider*** class instead, it is optimized for the data 
 # Section 9: Animations[MEALS APP]
 ![Screenshot 2024-01-05 at 5 40 42 AM](https://github.com/adityagaur0/meals/assets/112656570/eea66804-22c5-4a5d-bebd-ed508853d5bc)
 
-1. explicit animations
+### 1. explicit animations
  task 1 : create an explicit animation means own animation in categroies. dart to add animations to it.
  -to change from stateless to stateful => Go to refactor and click convert to stateful.
 
 ```
 //Section 9: {A.} To make an explicit animation convert this stateless to statefull widget
-//- to convert to statefull . right click , go to refactor and convert it
+//- to convert to stateful. right click, go to refactor, and convert it
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen(
       {super.key,
@@ -305,30 +305,30 @@ class _CategoriesScreenState extends State<CategoriesScreen>
     _animationController = AnimationController(
       // animationcontroller class constructor function
       /*{C. }
-      vsync wants a ticker provider,this vsync make sure this animation executes 
+      vsync wants a ticker provider, this vsync makes sure this animation executes 
       for every frame for smooth transition(60 times per sec).
-      This ticker provider is recieved by vsync by adding feature called 
+      This ticker provider is received by vsync by adding a feature called 
       (for explicit animations only) `with`(keyword: this with keyword allows 
       to add mixin to a class) and class mixin here is `SingleTickerProviderStateMixin`
-      (this mixin class provide various feature needed by flutter animation sys.)
-      single for single animation controller and for many animation controller
+      (this mixin class provides various features needed by flutter animation sys.)
+      single for single animation controller and many animation controllers
       use TickerProviderStateMixin.
        */
       vsync: this, //always req
       duration: const Duration(
-          milliseconds: 300), //to controll how long animation will play.
+          milliseconds: 300), //to control how long the animation will play.
       lowerBound: 0,
       upperBound: 1,
       /*
       {D. }
-      throught this we in the end controll btw which value flutter will aniamte.
+      Through this we in the end control btw which value flutter will animate.
       therefore with animations, we in the end always animate btw two values.
-      means: animation will start at 0 and after 300 sec will stop at 1.
+      means: the animation will start at 0 and after 300 sec will stop at 1.
 
        
       */
     );
-    _animationController.forward(); //to start the aniamtion
+    _animationController.forward(); //to start the animation
     //we can use .repeat() also to start again the animation once done
   }
 
@@ -340,10 +340,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>
 
   void _selectcategories(BuildContext context, Category category) {
     //159
-    // load the dummy meals data into the their respective category
+    //Load the dummy meal data into their respective category
     // category in the argument is the selected category by the user
-    // and user can now click on it.
-    // after clicking the
+    // and the user can now click on it.
+    //After clicking the
     // final filteredmeals = dummyMeals
     //     .where((meal) => meal.categories.contains(category.id))
     //     .toList();
@@ -461,3 +461,24 @@ class _CategoriesScreenState extends State<CategoriesScreen>
 }
 
 ```
+
+### 2.Implicit Animations
+List : https://docs.flutter.dev/ui/widgets/animation
+
+Adding animation to the star button in meals details screen
+```
+  icon: AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) {
+                return RotationTransition(
+                  turns: Tween(begin: 0.8, end: 1.0).animate(animation),
+                  child: child,
+                );
+              },
+              child: Icon(
+                isFavourite ? Icons.star : Icons.star_border,
+                key: ValueKey(isFavourite),
+              ),
+            ), // animate A.
+```
+
