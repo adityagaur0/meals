@@ -11,7 +11,7 @@ import 'package:meals/widgets/category_grid_item.dart';
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen(
       {super.key,
-       //required this.onToggleFavourite, ** NO NEED CUZ OF PROVIDER
+      //required this.onToggleFavourite, ** NO NEED CUZ OF PROVIDER
       required this.availableMeals});
   //final void Function(Meal meal) onToggleFavourite;  ** NO NEED CUZ OF PROVIDER
   final List<Meal> availableMeals;
@@ -20,7 +20,31 @@ class CategoriesScreen extends StatefulWidget {
   State<CategoriesScreen> createState() => _CategoriesScreenState();
 }
 
-class _CategoriesScreenState extends State<CategoriesScreen> {
+class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerProviderStateMixin{
+  late AnimationController //class
+      _animationController; // animation controller must be set before build.
+//late is used to tell dart that it is fine, once the property is used . it will have a value.
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _animationController = AnimationController(// animationcontroller class constructor function
+      /*
+      vsync wants a ticker provider,this vsync make sure this animation executes 
+      for every frame for smooth transition(60 times per sec).
+      This ticker provider is recieved by vsync by adding feature called 
+      (for explicit animations only) `with`(keyword: this with keyword allows 
+      to add mixin to a class) and class mixin here is `SingleTickerProviderStateMixin`
+      (this mixin class provide various feature needed by flutter animation sys.)
+      single for single animation controller and for many animation controller
+      use TickerProviderStateMixin.
+       */
+      vsync:this,
+
+    ); 
+  }
+
   void _selectcategories(BuildContext context, Category category) {
     //159
     // load the dummy meals data into the their respective category
@@ -47,7 +71,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         builder: (context) => MealsScreen(
           title: category.title,
           meals: filteredmeals,
-        
         ),
       ),
     );
@@ -55,7 +78,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   @override
   // Widget build(BuildContext context) {
-  Widget build(BuildContext context,) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       //1.1. using gridView instead of listview.
       // gridview also contain gridview.builder (to dynamically grow the grid) for possible performance optimization.
