@@ -56,6 +56,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>
        
       */
     );
+    _animationController.forward(); //to start the aniamtion
+    //we can use .repeat() also to start again the animation once done 
   }
 
   @override
@@ -165,8 +167,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       ),
       builder: (context, child) => Padding(
         padding: EdgeInsets.only(
-          top: _animationController.value * 100, //means initally value is 0 and after 300 ms value will be 1*100
-         ),
+          top:100 - _animationController.value *
+              100, //means initally value is 0 and after 300 ms value will be 1*100
+        ),
         child: child,
       ),
     );
