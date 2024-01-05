@@ -6,6 +6,7 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/category_grid_item.dart';
 
+//Section 9: To make an explicit animation convert this stateless to statefull widget
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen(
       {super.key,
