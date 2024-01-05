@@ -270,7 +270,7 @@ Use the ***StateNotifierProvider*** class instead, it is optimized for the data 
 ----
 ----
 
-# Section 9: Animations[MEALS APP]
+# Section 10: Animations[MEALS APP]
 ![Screenshot 2024-01-05 at 5 40 42 AM](https://github.com/adityagaur0/meals/assets/112656570/eea66804-22c5-4a5d-bebd-ed508853d5bc)
 
 ### 1. explicit animations
