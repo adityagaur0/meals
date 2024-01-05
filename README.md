@@ -481,4 +481,4 @@ Adding animation to the star button in meals details screen
               ),
             ), // animate A.
 ```
-
+### 3. Hero Transitions
