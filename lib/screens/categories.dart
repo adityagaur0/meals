@@ -51,6 +51,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       {D. }
       throught this we in the end controll btw which value flutter will aniamte.
       therefore with animations, we in the end always animate btw two values.
+      means: animation will start at 0 and after 300 sec will stop at 1.
 
        
       */
@@ -111,7 +112,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
      */
     return AnimatedBuilder(
       animation: _animationController,
-      builder: (context, child) => GridView(
+      child: GridView(
         padding: const EdgeInsets.all(24),
         //1.2. grid Delegate : Controls the layout of the grid.
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -161,6 +162,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>
               },
             )
         ],
+      ),
+      builder: (context, child) => Padding(
+        padding: EdgeInsets.only(
+          top: _animationController.value * 100, //means initally value is 0 and after 300 ms value will be 1*100
+         ),
+        child: child,
       ),
     );
   }
