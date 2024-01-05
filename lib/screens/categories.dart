@@ -165,12 +165,25 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             )
         ],
       ),
+      //--- APPROACH 1
+      /*
       builder: (context, child) => Padding(
         padding: EdgeInsets.only(top: 100 - _animationController.value * 100),
         //means initally value is 0 and after 300 ms value will be 1*100
 
         child: child,
       ),
+      */
+      //--- APPROACH 2
+      builder: (context, child) => SlideTransition(
+        position: Tween(
+          begin: const Offset(0, 0.3),
+          end: const Offset(0, 0), //want to get back to actual value
+        ).animate(CurvedAnimation(
+            parent: _animationController, curve: Curves.easeInOut )),
+        child: child,
+      ),
+      //drive helps us to animate instead of 0 & 1 value to other value
     );
   }
 }
