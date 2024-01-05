@@ -50,10 +50,16 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       /*
       throught this we in the end controll btw which value flutter will aniamte.
       therefore with animations, we in the end always animate btw two values.
-      
+
        
       */
     );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   void _selectcategories(BuildContext context, Category category) {
