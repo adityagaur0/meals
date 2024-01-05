@@ -6,7 +6,7 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/category_grid_item.dart';
 
-//Section 9: To make an explicit animation convert this stateless to statefull widget
+//Section 9: {A.} To make an explicit animation convert this stateless to statefull widget
 //- to convert to statefull . right click , go to refactor and convert it
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen(
@@ -23,7 +23,7 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController //class
-      _animationController; // animation controller must be set before build.
+      _animationController; // {B. }animation controller must be set before build.
 //late is used to tell dart that it is fine, once the property is used . it will have a value.
 
   @override
@@ -32,7 +32,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
     super.initState();
     _animationController = AnimationController(
       // animationcontroller class constructor function
-      /*
+      /*{C. }
       vsync wants a ticker provider,this vsync make sure this animation executes 
       for every frame for smooth transition(60 times per sec).
       This ticker provider is recieved by vsync by adding feature called 
@@ -48,6 +48,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       lowerBound: 0,
       upperBound: 1,
       /*
+      {D. }
       throught this we in the end controll btw which value flutter will aniamte.
       therefore with animations, we in the end always animate btw two values.
 
@@ -98,12 +99,19 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   Widget build(
     BuildContext context,
   ) {
-    return Scaffold(
-      //1.1. using gridView instead of listview.
-      // gridview also contain gridview.builder (to dynamically grow the grid) for possible performance optimization.
-      // but we use gridview() only cuz the categories are limited.
+    //1.1. using gridView instead of listview.
+    // gridview also contain gridview.builder (to dynamically grow the grid) for possible performance optimization.
+    // but we use gridview() only cuz the categories are limited.
+    /*
+    {E. } the animation is a the listenable object and _animationController is such a listenable object
+    and animation controller tells animation when to call the builder function.
+    hence this func, we pass through this builder, will be executed for every tick 
+    of our animation.For eg. 60 time per second.
 
-      body: GridView(
+     */
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (context, child) => GridView(
         padding: const EdgeInsets.all(24),
         //1.2. grid Delegate : Controls the layout of the grid.
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
