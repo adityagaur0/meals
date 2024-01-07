@@ -49,7 +49,7 @@ class FavouriteMealsNotifier extends StateNotifier<List<Meal>> {
        use `state= state.where()` cuz using `where` we filter the list and get the
        new list. `where` get the fn (eg mealItem) where we get current item after item and we 
        had to return true if we wanna keep it or drop it.
-       -(aka matlab where ek naya list create krta . hum usmein baari se poorane 
+       -(aka matlab where ek naya list create krta . hum usmein baari baari se poorane 
          list ke elemets daalte and voh unn old element ko add ya drop krta nayi
          list mein)
        to yaha hum mealItem.id aagr meal.id ke equal nahi hai to agar true aaya 
