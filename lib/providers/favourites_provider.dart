@@ -34,7 +34,7 @@ class FavouriteMealsNotifier extends StateNotifier<List<Meal>> {
     - same as we did in tabs.dart given below. but here we do differently
     - but logic will be same as below
     - ***IMPORTANT**** == NEVER EDIT THE VALUE ,MANAGED BY THE NOTIFIER (like super([]))
-    - in state notifier we are not allow to edit the  existing value in 
+    - in state notifier, we are not allow to edit the  existing value in 
        the memory insted create new one.
        (matlab naya banao porrane ko edit na karo) EXAMPLE cant use .add or .remove 
        instead replace it.
