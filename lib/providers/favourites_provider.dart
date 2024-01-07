@@ -26,7 +26,7 @@ StateNotifier class is instantiated :
 */
 class FavouriteMealsNotifier extends StateNotifier<List<Meal>> {
   FavouriteMealsNotifier() : super([]);
-  //A, constructor , super to reach to parent class, and pass we pass initial data type.
+  //A, constructor , super to reach to parent class, and pass,i.e. we pass initial data type.
 
   //
   bool toggleMealFavouriteStatus(Meal meal) {
