@@ -5,7 +5,8 @@ import 'package:meals/providers/filters_provider.dart';
 // enum Filter { glutenFree, lactoseFree, vegitarian, vegan }
 
 // // class FiltersScreen extends ConsumerStatefulWidget {  *********** VIDEO 189 explain below
-class FiltersScreen extends ConsumerWidget {
+class FiltersScreen
+    extends ConsumerWidget {
   const FiltersScreen({
     super.key,
     // required this.currentFilters,
@@ -40,10 +41,16 @@ class FiltersScreen extends ConsumerWidget {
 //   // }
 //
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final activeFilters = ref.watch(filtersProvider);
+  Widget build(
+      BuildContext
+          context,
+      WidgetRef
+          ref) {
+    final activeFilters =
+        ref.watch(filtersProvider);
     return Scaffold(
-      appBar: AppBar(
+      appBar:
+          AppBar(
         title: const Text("YourFilters"),
       ),
       // // body: WillPopScope(    *********** VIDEO 189 explain below
@@ -73,7 +80,8 @@ class FiltersScreen extends ConsumerWidget {
       // //     return true;
       // //   },
 
-      body: Column(
+      body:
+          Column(
         children: [
           SwitchListTile(
             value: activeFilters[Filter.glutenFree]!,
@@ -81,9 +89,7 @@ class FiltersScreen extends ConsumerWidget {
               // // setState(() {      *********** VIDEO 189 explain below
               // //   _glutenFreeFilterSet = ischecked;
               // // });
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.glutenFree, ischecked);
+              ref.read(filtersProvider.notifier).setFilter(Filter.glutenFree, ischecked);
             },
             title: Text(
               'Gluten-free',
@@ -106,9 +112,7 @@ class FiltersScreen extends ConsumerWidget {
               // setState(() {       *********** VIDEO 189 explain below
               //   _lactoseFreeFilterSet = ischecked;
               // });
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.lactoseFree, ischecked);
+              ref.read(filtersProvider.notifier).setFilter(Filter.lactoseFree, ischecked);
             },
             title: Text(
               'Lactose-free',
@@ -132,9 +136,7 @@ class FiltersScreen extends ConsumerWidget {
               //   _vegitarianFilterSet = ischecked;
               // });
 
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.vegitarian, ischecked);
+              ref.read(filtersProvider.notifier).setFilter(Filter.vegitarian, ischecked);
             },
             title: Text(
               'Vegitarian',
@@ -157,9 +159,7 @@ class FiltersScreen extends ConsumerWidget {
               // setState(() {        *********** VIDEO 189 explain below
               //   _veganFilterSet = ischecked;
               // });
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.vegan, ischecked);
+              ref.read(filtersProvider.notifier).setFilter(Filter.vegan, ischecked);
             },
             title: Text(
               'Vegan',
