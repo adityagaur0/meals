@@ -5,8 +5,7 @@ import 'package:meals/providers/filters_provider.dart';
 // enum Filter { glutenFree, lactoseFree, vegitarian, vegan }
 
 // // class FiltersScreen extends ConsumerStatefulWidget {  *********** VIDEO 189 explain below
-class FiltersScreen
-    extends ConsumerWidget {
+class FiltersScreen extends ConsumerWidget {
   const FiltersScreen({
     super.key,
     // required this.currentFilters,
