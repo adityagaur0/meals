@@ -11,7 +11,6 @@ class FiltersScreen
     super.key,
     // required this.currentFilters,
   });
-
   // final Map<Filter, bool> currentFilters; **** NO LONGER NEED CUZ FILTER PROVIDER
 
 // //   @override    *********** VIDEO 189 explain below

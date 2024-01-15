@@ -5,7 +5,6 @@ into list of favourite meals.
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/models/meal.dart';
-import 'package:meals/widgets/meal_item.dart';
 
 /*
 here me dont use provider class as it is used for static dummy data
